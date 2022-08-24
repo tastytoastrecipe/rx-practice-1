@@ -1,0 +1,6 @@
+framework module Pods_rx_practice_1 {
+  umbrella header "Pods-rx-practice-1-umbrella.h"
+
+  export *
+  module * { export * }
+}
