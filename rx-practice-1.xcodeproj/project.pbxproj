@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		242928F528B74AD5009EB7FC /* WaterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242928F428B74AD5009EB7FC /* WaterData.swift */; };
+		242928F728B74F34009EB7FC /* TableVm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242928F628B74F34009EB7FC /* TableVm.swift */; };
 		244AADA228B4BD5500B5B3D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244AADA128B4BD5500B5B3D1 /* AppDelegate.swift */; };
 		244AADA428B4BD5500B5B3D1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244AADA328B4BD5500B5B3D1 /* SceneDelegate.swift */; };
 		244AADAC28B4BD5500B5B3D1 /* rx_practice_1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 244AADAA28B4BD5500B5B3D1 /* rx_practice_1.xcdatamodeld */; };
@@ -24,6 +26,8 @@
 
 /* Begin PBXFileReference section */
 		0EE0091D57A50420C863E99B /* Pods_rx_practice_1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_rx_practice_1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		242928F428B74AD5009EB7FC /* WaterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterData.swift; sourceTree = "<group>"; };
+		242928F628B74F34009EB7FC /* TableVm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableVm.swift; sourceTree = "<group>"; };
 		244AAD9E28B4BD5500B5B3D1 /* rx-practice-1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "rx-practice-1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		244AADA128B4BD5500B5B3D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		244AADA328B4BD5500B5B3D1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -54,6 +58,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		242928F828B75E39009EB7FC /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		244AAD9528B4BD5500B5B3D1 = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +89,7 @@
 				244AADC628B5A3F200B5B3D1 /* Models */,
 				244AADC328B5A13500B5B3D1 /* ViewModels */,
 				244AADB828B4BECF00B5B3D1 /* ViewControllers */,
+				242928F828B75E39009EB7FC /* Cells */,
 				244AADA128B4BD5500B5B3D1 /* AppDelegate.swift */,
 				244AADA328B4BD5500B5B3D1 /* SceneDelegate.swift */,
 				244AADAD28B4BD5600B5B3D1 /* Assets.xcassets */,
@@ -104,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				244AADC428B5A15500B5B3D1 /* MainReactor.swift */,
+				242928F628B74F34009EB7FC /* TableVm.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -112,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				244AADC728B5A3FE00B5B3D1 /* Scenes.swift */,
+				242928F428B74AD5009EB7FC /* WaterData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -249,8 +263,10 @@
 			files = (
 				244AADBA28B4BF0300B5B3D1 /* MainVc.swift in Sources */,
 				244AADC228B5A0F700B5B3D1 /* ScrollVc.swift in Sources */,
+				242928F528B74AD5009EB7FC /* WaterData.swift in Sources */,
 				244AADC828B5A3FE00B5B3D1 /* Scenes.swift in Sources */,
 				244AADC028B5A0EA00B5B3D1 /* StackVc.swift in Sources */,
+				242928F728B74F34009EB7FC /* TableVm.swift in Sources */,
 				244AADA228B4BD5500B5B3D1 /* AppDelegate.swift in Sources */,
 				244AADC528B5A15500B5B3D1 /* MainReactor.swift in Sources */,
 				244AADBE28B5A0D900B5B3D1 /* CollectionVc.swift in Sources */,
