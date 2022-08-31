@@ -152,6 +152,33 @@ class TableVc: UIViewController {
         multipleSectionRelay
             .bind(to: table.rx.items(dataSource: dataSource))
             .disposed(by: bag)
+        
+        table.rx.modelDeleted(MultipleItem.self)
+            .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
+            .subscribe(onNext: { [unowned self] item in
+                vm.deleteItem(item: item)
+                multipleSectionRelay.accept(vm.multipleSections)
+            })
+            .disposed(by: bag)
+        
+        // 터치한 후 선택 상태 해제
+        table.rx.itemSelected
+            .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
+            .subscribe { [unowned self] indexPath in
+                table.deselectRow(at: indexPath, animated: true)
+            }
+            .disposed(by: bag)
+  
+        /* itemSelected, modelSelected를 zip으로 동시에 받음
+        Observable.zip(table.rx.modelSelected(Water.self), table.rx.itemSelected)
+            .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
+            .bind { [unowned self] (water, index) in
+                vm.deleteWater(water: water)
+                sectionRelay.accept(vm.sections)
+                self.table.deselectRow(at: index, animated: true)
+            }
+            .disposed(by: bag)
+         */
     }
     
 

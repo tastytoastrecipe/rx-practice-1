@@ -17,19 +17,31 @@ class CompanyCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        contentView.snp.makeConstraints { make in
+            make.height.equalTo(70)
+        }
+        
+        let background = UIView()
+        contentView.addSubview(background)
+        background.snp.makeConstraints { make in
+            make.leading.trailing.equalTo(20)
+            make.top.bottom.equalTo(10)
+        }
+        
         name = UILabel()
-        contentView.addSubview(name)
+        name.textColor = .red
+        name.font = UIFont.systemFont(ofSize: 17)
+        background.addSubview(name)
         
         location = UILabel()
-        contentView.addSubview(location)
+        location.numberOfLines = 0
+        location.textColor = .gray
+        location.font = UIFont.systemFont(ofSize: 12)
+        background.addSubview(location)
         
         scence = UILabel()
-        contentView.addSubview(scence)
-        
-        name.backgroundColor = .lightGray
-        scence.backgroundColor = .lightGray
-        location.backgroundColor = .systemIndigo
-        location.numberOfLines = 0
+        scence.textColor = .lightGray
+        background.addSubview(scence)
         
         name.snp.makeConstraints { make in
             make.leading.top.equalToSuperview()
@@ -39,16 +51,18 @@ class CompanyCell: UITableViewCell {
         name.setContentHuggingPriority(UILayoutPriority.defaultHigh, for: .horizontal)
         
         location.snp.makeConstraints { make in
-            make.leading.trailing.bottom.equalToSuperview()
-            make.top.equalTo(name.snp.bottom)
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalToSuperview().inset(18)
+            make.height.equalTo(14)
         }
         
         scence.snp.makeConstraints { make in
-            make.leading.equalTo(name.snp.trailing).offset(20).priority(ConstraintPriority.medium)
+            make.leading.equalTo(name.snp.trailing).offset(4).priority(ConstraintPriority.medium)
             make.top.trailing.equalToSuperview()
             make.height.equalTo(30)
         }
         scence.setContentHuggingPriority(UILayoutPriority.defaultLow, for: .horizontal)
+        
         print("CompnayCell::init")
     }
     
@@ -64,7 +78,7 @@ class CompanyCell: UITableViewCell {
     func configure(name: String, location: String, scence: String) {
         self.name.text = name
         self.location.text = location
-        self.scence.text = scence
+        self.scence.text = "(\(scence))"
     }
 
 }

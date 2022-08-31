@@ -19,6 +19,10 @@ enum MultipleItem: Equatable, IdentifiableType {
             return company.identity
         }
     }
+    
+    static func ==(lhs: MultipleItem, rhs: MultipleItem) -> Bool {
+            return lhs.identity == rhs.identity
+        }
 }
 
 enum MultipleSection {
@@ -30,7 +34,7 @@ extension MultipleSection: AnimatableSectionModelType {
     typealias Item = MultipleItem
     typealias Identity = String
     
-    var items: [MultipleItem] {
+    var items: [Item] {
         switch self {
         case .waterSection(_, _, let items):
             return items
@@ -41,10 +45,10 @@ extension MultipleSection: AnimatableSectionModelType {
     
     var identity: String {
         switch self {
-        case .waterSection(_, _, _):
-            return "section1"
-        case .companySection(_, _, _):
-            return "section2"
+        case .waterSection(let identity, _, _):
+            return identity
+        case .companySection(let identity, _, _):
+            return identity
         }
     }
     
@@ -57,12 +61,25 @@ extension MultipleSection: AnimatableSectionModelType {
         }
     }
     
-    init(original: MultipleSection, items: [MultipleItem]) {
+    init(original: MultipleSection, items: [Item]) {
         switch original {
-        case let .waterSection(identity, header, items):
-            self = .waterSection(identity: identity, header: header, items: items)
-        case let .companySection(identity, header, items):
-            self = .companySection(identity: identity, header: header, items: items)
+        case .waterSection(_, _, _):
+            self = .waterSection(identity: original.identity, header: original.header, items: items)
+        case .companySection(_, _, _):
+            self = .companySection(identity: original.identity, header: original.header, items: items)
+        }
+    }
+    
+    mutating func deleteItem(identity: String) {
+        switch self {
+        case let .waterSection(_, _, items):
+            var newItems = items
+            newItems.removeAll(where: { $0.identity == identity })
+            self = MultipleSection.waterSection(identity: self.identity, header: self.header, items: newItems)
+        case let .companySection(_, _, items):
+            var newItems = items
+            newItems.removeAll(where: { $0.identity == identity })
+            self = MultipleSection.companySection(identity: self.identity, header: self.header, items: newItems)
         }
     }
 }
