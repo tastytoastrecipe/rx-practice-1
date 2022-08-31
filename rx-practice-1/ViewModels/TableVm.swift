@@ -7,6 +7,12 @@
 
 import RxSwift
 
+/*
+ Fatal error: Duplicate section
+ companySection(identity: "water-2", header: "식수 기업", items:
+ [rx_practice_1.MultipleItem.company(company: rx_practice_1.Company(identity: "company-1", name: "제주 삼다수", location: "제주특별자치도 제주시 조천읍 남조로 1717-35", scence: "scence 1995")), rx_practice_1.MultipleItem.company(company: rx_practice_1.Company(identity: "company-2", name: "해태 htb", location: "서울 종로구 새문안로 58 (LG 광화문 빌딩)", scence: "scence 1973")), rx_practice_1.MultipleItem.company(company: rx_practice_1.Company(identity: "company-3", name: "DANONE", location: "17, boulevard Haussmann 75009 프랑스 파리", scence: "scence 1919")), rx_practice_1.MultipleItem.company(company: rx_practice_1.Company(identity: "company-4", name: "농심", location: "서울특별시 동작구 여의대방로 112", scence: "scence 1965"))])
+ */
+
 class TableVm {
     
     var waterItems = [
@@ -63,8 +69,11 @@ class TableVm {
         waterItems.removeAll(where: { $0.identity == item.identity })
         companyItems.removeAll(where: { $0.identity == item.identity })
         
-        multipleSections.removeAll()
-        setMultipleSection()
+        for (i, _) in multipleSections.enumerated() {
+            multipleSections[i].deleteItem(identity: item.identity)
+        }
+//        multipleSections.removeAll()
+//        setMultipleSection()
     }
     
     func setMultipleSection() {
